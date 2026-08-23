@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
      'todos',
+     'passwords',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,9 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+FERNET_KEY = b'oML8mCRre1pzvrUCrsEOBKD6IrxGKOI9xRJUHNdrIsM='
