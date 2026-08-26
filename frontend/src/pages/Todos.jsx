@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
+import "./Pages.css";
 
 function Todos() {
   const [todos, setTodos] = useState([]);
@@ -56,36 +57,32 @@ function Todos() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ maxWidth: 500, margin: "40px auto" }}>
+    <div className="page-container">
       <h2>Todos</h2>
 
-      <form onSubmit={handleAdd} style={{ marginBottom: 20 }}>
-        <input
-          type="text"
-          placeholder="New todo..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          style={{ width: "70%", marginRight: 10 }}
-        />
-        <button type="submit">Add</button>
-      </form>
+      <div className="form-card">
+        <form onSubmit={handleAdd}>
+          <input
+            type="text"
+            placeholder="New todo..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <button type="submit">Add</button>
+        </form>
+      </div>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul className="item-list">
         {todos.map((todo) => (
-          <li
-            key={todo.id}
-            style={{ marginBottom: 10, display: "flex", alignItems: "center" }}
-          >
+          <li key={todo.id}>
             <input
               type="checkbox"
               checked={todo.is_completed}
               onChange={() => toggleComplete(todo)}
-              style={{ marginRight: 10 }}
             />
             <span
               style={{
                 textDecoration: todo.is_completed ? "line-through" : "none",
-                flex: 1,
               }}
             >
               {todo.title}
@@ -95,7 +92,7 @@ function Todos() {
         ))}
       </ul>
 
-      {todos.length === 0 && <p>No todos yet.</p>}
+      {todos.length === 0 && <p className="empty-state">No todos yet.</p>}
     </div>
   );
 }

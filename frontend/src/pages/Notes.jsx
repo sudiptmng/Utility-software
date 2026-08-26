@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
+import "./Pages.css";
 
 function Notes() {
   const [notes, setNotes] = useState([]);
@@ -47,37 +48,39 @@ function Notes() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ maxWidth: 500, margin: "40px auto" }}>
+    <div className="page-container">
       <h2>Notes</h2>
 
-      <form onSubmit={handleAdd} style={{ marginBottom: 20 }}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 8 }}
-        />
-        <textarea
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 8 }}
-        />
-        <button type="submit">Add</button>
-      </form>
+      <div className="form-card">
+        <form onSubmit={handleAdd}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button type="submit">Add</button>
+        </form>
+      </div>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul className="item-list">
         {notes.map((note) => (
-          <li key={note.id} style={{ marginBottom: 10 }}>
-            <strong>{note.title}</strong>
-            <p style={{ margin: "4px 0" }}>{note.content}</p>
+          <li key={note.id}>
+            <span>
+              <strong>{note.title}</strong>
+              <p>{note.content}</p>
+            </span>
             <button onClick={() => handleDelete(note.id)}>Delete</button>
           </li>
         ))}
       </ul>
 
-      {notes.length === 0 && <p>No notes yet.</p>}
+      {notes.length === 0 && <p className="empty-state">No notes yet.</p>}
     </div>
   );
 }

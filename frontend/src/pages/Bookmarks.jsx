@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
+import "./Pages.css";
 
 function Bookmarks() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -47,39 +48,31 @@ function Bookmarks() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ maxWidth: 500, margin: "40px auto" }}>
+    <div className="page-container">
       <h2>Bookmarks</h2>
 
-      <form onSubmit={handleAdd} style={{ marginBottom: 20 }}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 8 }}
-        />
-        <input
-          type="text"
-          placeholder="URL"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 8 }}
-        />
-        <button type="submit">Add</button>
-      </form>
+      <div className="form-card">
+        <form onSubmit={handleAdd}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="URL"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <button type="submit">Add</button>
+        </form>
+      </div>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul className="item-list">
         {bookmarks.map((bm) => (
-          <li
-            key={bm.id}
-            style={{ marginBottom: 10, display: "flex", alignItems: "center" }}
-          >
-            <a
-              href={bm.url}
-              target="_blank"
-              rel="noreferrer"
-              style={{ flex: 1 }}
-            >
+          <li key={bm.id}>
+            <a href={bm.url} target="_blank" rel="noreferrer">
               {bm.title}
             </a>
             <button onClick={() => handleDelete(bm.id)}>Delete</button>
@@ -87,7 +80,9 @@ function Bookmarks() {
         ))}
       </ul>
 
-      {bookmarks.length === 0 && <p>No bookmarks yet.</p>}
+      {bookmarks.length === 0 && (
+        <p className="empty-state">No bookmarks yet.</p>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
+import "./Pages.css";
 
 function Passwords() {
   const [entries, setEntries] = useState([]);
@@ -53,41 +54,37 @@ function Passwords() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ maxWidth: 500, margin: "40px auto" }}>
+    <div className="page-container">
       <h2>Passwords</h2>
 
-      <form onSubmit={handleAdd} style={{ marginBottom: 20 }}>
-        <input
-          type="text"
-          placeholder="Site name"
-          value={siteName}
-          onChange={(e) => setSiteName(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 8 }}
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 8 }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 8 }}
-        />
-        <button type="submit">Add</button>
-      </form>
+      <div className="form-card">
+        <form onSubmit={handleAdd}>
+          <input
+            type="text"
+            placeholder="Site name"
+            value={siteName}
+            onChange={(e) => setSiteName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Add</button>
+        </form>
+      </div>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul className="item-list">
         {entries.map((entry) => (
-          <li
-            key={entry.id}
-            style={{ marginBottom: 10, display: "flex", alignItems: "center" }}
-          >
-            <span style={{ flex: 1 }}>
+          <li key={entry.id}>
+            <span>
               <strong>{entry.site_name}</strong> — {entry.username}
             </span>
             <button onClick={() => handleDelete(entry.id)}>Delete</button>
@@ -95,7 +92,7 @@ function Passwords() {
         ))}
       </ul>
 
-      {entries.length === 0 && <p>No entries yet.</p>}
+      {entries.length === 0 && <p className="empty-state">No entries yet.</p>}
     </div>
   );
 }
