@@ -1,6 +1,6 @@
 import "./Login.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import api from "../api/axios";
@@ -60,6 +60,9 @@ function Login() {
           {error && <p className="error-text">{error}</p>}
           <button type="submit">Log In</button>
         </form>
+        <p style={{ textAlign: "center", marginTop: 14, fontSize: 14 }}>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </div>
     </div>
   );

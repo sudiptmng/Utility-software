@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-     'todos',
-     'passwords',
-     'notes',
-     'bookmarks',
-     'drf_spectacular',
-     'corsheaders',
+    'todos',
+    'passwords',
+    'notes',
+    'bookmarks',
+    'drf_spectacular',
+    'corsheaders',
+    'accounts',
 ]
 
 MIDDLEWARE = [
