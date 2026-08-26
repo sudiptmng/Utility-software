@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  background-color: #1a1a1a;
+  background-color: #f8f9fa;
   padding: 16px 32px;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .navbar a {
-  color: #b0b0b0;
+  color: #495057;
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
@@ -17,13 +17,13 @@
 
 .navbar a:hover,
 .navbar a.active {
-  color: #4dabf7;
+  color: #1971c2;
 }
 
 .navbar .logout-btn {
   margin-left: auto;
-  background-color: #2a2a2a;
-  color: #e0e0e0;
+  background-color: #e9ecef;
+  color: #212529;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
@@ -32,5 +32,5 @@
 }
 
 .navbar .logout-btn:hover {
-  background-color: #3a3a3a;
+  background-color: #dee2e6;
 }

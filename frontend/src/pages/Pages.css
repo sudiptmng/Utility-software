@@ -5,13 +5,13 @@
 }
 
 .page-container h2 {
-  color: #fff;
+  color: #1a1a1a;
   margin-bottom: 20px;
 }
 
 .form-card {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 24px;
@@ -20,9 +20,9 @@
 .form-card input,
 .form-card textarea {
   width: 100%;
-  background-color: #121212;
-  border: 1px solid #333;
-  color: #e0e0e0;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  color: #1a1a1a;
   padding: 10px 12px;
   border-radius: 6px;
   font-size: 14px;
@@ -32,7 +32,7 @@
 .form-card input:focus,
 .form-card textarea:focus {
   outline: none;
-  border-color: #4dabf7;
+  border-color: #1971c2;
 }
 
 .form-card textarea {
@@ -41,7 +41,7 @@
 }
 
 .form-card button[type="submit"] {
-  background-color: #4dabf7;
+  background-color: #1971c2;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -52,7 +52,7 @@
 }
 
 .form-card button[type="submit"]:hover {
-  background-color: #339af0;
+  background-color: #1864ab;
 }
 
 .item-list {
@@ -61,8 +61,8 @@
 }
 
 .item-list li {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
   padding: 14px 16px;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -78,13 +78,13 @@
 
 .item-list li p {
   margin: 4px 0 0;
-  color: #999;
+  color: #666;
   font-size: 14px;
 }
 
 .item-list li button {
-  background-color: #3a1f1f;
-  color: #ff8787;
+  background-color: #ffe3e3;
+  color: #c92a2a;
   border: none;
   padding: 6px 14px;
   border-radius: 6px;
@@ -94,11 +94,11 @@
 }
 
 .item-list li button:hover {
-  background-color: #4a2525;
+  background-color: #ffc9c9;
 }
 
 .empty-state {
-  color: #777;
+  color: #868e96;
   text-align: center;
   padding: 20px;
 }
