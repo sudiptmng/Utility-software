@@ -7,6 +7,7 @@ function Notes() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
+  const [selectedNote, setSelectedNote] = useState(null);
 
   const fetchNotes = async () => {
     try {
@@ -40,6 +41,7 @@ function Notes() {
     try {
       await api.delete(`/notes/${id}/`);
       fetchNotes();
+      setSelectedNote(null);
     } catch (err) {
       console.error("Failed to delete note", err);
     }
@@ -70,17 +72,51 @@ function Notes() {
 
       <ul className="item-list">
         {notes.map((note) => (
-          <li key={note.id}>
+          <li
+            key={note.id}
+            className="note-row"
+            onClick={() => setSelectedNote(note)}
+          >
             <span>
               <strong>{note.title}</strong>
               <p>{note.content}</p>
             </span>
-            <button onClick={() => handleDelete(note.id)}>Delete</button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(note.id);
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
 
       {notes.length === 0 && <p className="empty-state">No notes yet.</p>}
+
+      {selectedNote && (
+        <div className="modal-overlay" onClick={() => setSelectedNote(null)}>
+          <div
+            className="modal-card note-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3>{selectedNote.title}</h3>
+            <p className="note-modal-content">{selectedNote.content}</p>
+            <div className="modal-actions">
+              <button type="button" onClick={() => setSelectedNote(null)}>
+                Close
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDelete(selectedNote.id)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
