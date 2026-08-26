@@ -1,13 +1,24 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Todos from "./pages/Todos";
 import Passwords from "./pages/Passwords";
 import Notes from "./pages/Notes";
 import Bookmarks from "./pages/Bookmarks";
 
-function App() {
+function Layout() {
+  const location = useLocation();
+  const hideNavbar = location.pathname === "/login";
+
   return (
-    <BrowserRouter>
+    <>
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
@@ -16,6 +27,14 @@ function App() {
         <Route path="/notes" element={<Notes />} />
         <Route path="/bookmarks" element={<Bookmarks />} />
       </Routes>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Layout />
     </BrowserRouter>
   );
 }
