@@ -1,11 +1,14 @@
 import "./Login.css";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import api from "../api/axios";
 
 function Login() {
+  const location = useLocation();
+  const redirectMessage = location.state?.message;
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -29,6 +32,7 @@ function Login() {
     <div className="login-wrapper">
       <div className="login-card">
         <h1>Welcome back</h1>
+        {redirectMessage && <p className="error-text">{redirectMessage}</p>}
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
           <input

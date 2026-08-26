@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import PrivateRoute from "./components/PrivateRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Todos from "./pages/Todos";
@@ -25,10 +26,38 @@ function Layout() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/todos" element={<Todos />} />
-        <Route path="/passwords" element={<Passwords />} />
-        <Route path="/notes" element={<Notes />} />
-        <Route path="/bookmarks" element={<Bookmarks />} />
+        <Route
+          path="/todos"
+          element={
+            <PrivateRoute>
+              <Todos />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/passwords"
+          element={
+            <PrivateRoute>
+              <Passwords />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/notes"
+          element={
+            <PrivateRoute>
+              <Notes />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/bookmarks"
+          element={
+            <PrivateRoute>
+              <Bookmarks />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );
