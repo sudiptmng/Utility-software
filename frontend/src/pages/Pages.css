@@ -102,3 +102,97 @@
   text-align: center;
   padding: 20px;
 }
+
+.password-row {
+  justify-content: space-between;
+}
+
+.password-row-info {
+  flex: 1;
+}
+
+.site-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.row-username {
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.row-password {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+  color: #1a1a1a;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.modal-card h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.modal-card input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #1971c2;
+  color: #fff;
+}
+
+.modal-actions button[type="button"] {
+  background-color: #e9ecef;
+  color: #212529;
+}
