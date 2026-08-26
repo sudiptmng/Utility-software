@@ -43,10 +43,12 @@ INSTALLED_APPS = [
      'notes',
      'bookmarks',
      'drf_spectacular',
+     'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -144,3 +146,7 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
 }
 FERNET_KEY = b'oML8mCRre1pzvrUCrsEOBKD6IrxGKOI9xRJUHNdrIsM='
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
