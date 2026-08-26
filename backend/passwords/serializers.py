@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import PasswordEntry
-from .models import Note
-from .models import Bookmark
+from notes.models import Note
+from bookmarks.models import Bookmark
 
 
 class PasswordEntrySerializer(serializers.ModelSerializer):
