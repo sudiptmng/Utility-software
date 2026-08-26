@@ -2,6 +2,7 @@ asgiref==3.12.1
 attrs==26.1.0
 cffi==2.1.1
 colorama==0.4.6
+coverage==7.15.4
 cryptography==50.0.0
 Django==6.1
 djangorestframework==3.18.0
