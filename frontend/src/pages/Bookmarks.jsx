@@ -26,8 +26,14 @@ function Bookmarks() {
   const handleAdd = async (e) => {
     e.preventDefault();
     if (!title.trim() || !url.trim()) return;
+
+    let formattedUrl = url.trim();
+    if (!/^https?:\/\//i.test(formattedUrl)) {
+      formattedUrl = `https://${formattedUrl}`;
+    }
+
     try {
-      await api.post("/bookmarks/", { title, url });
+      await api.post("/bookmarks/", { title, url: formattedUrl });
       setTitle("");
       setUrl("");
       fetchBookmarks();
