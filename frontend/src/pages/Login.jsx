@@ -1,11 +1,14 @@
 import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import api from "../api/axios";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -23,26 +26,41 @@ function Login() {
   };
 
   return (
-    <div style={{ maxWidth: 320, margin: "80px auto" }}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 10 }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ display: "block", width: "100%", marginBottom: 10 }}
-        />
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Log In</button>
-      </form>
+    <div className="login-wrapper">
+      <div className="login-card">
+        <h1>Welcome back</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <label htmlFor="password">Password</label>
+          <div className="password-field">
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </button>
+          </div>
+
+          {error && <p className="error-text">{error}</p>}
+          <button type="submit">Log In</button>
+        </form>
+      </div>
     </div>
   );
 }

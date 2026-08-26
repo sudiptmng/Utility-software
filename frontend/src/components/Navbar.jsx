@@ -11,19 +11,14 @@ function Navbar() {
   };
 
   return (
-    <nav
-      style={{
-        display: "flex",
-        gap: 15,
-        padding: 15,
-        borderBottom: "1px solid #444",
-      }}
-    >
-      <Link to="/todos">Todos</Link>
-      <Link to="/passwords">Passwords</Link>
-      <Link to="/notes">Notes</Link>
-      <Link to="/bookmarks">Bookmarks</Link>
-      <button onClick={handleLogout} style={{ marginLeft: "auto" }}>
+    <nav className="navbar">
+      <div className="navbar-links">
+        <Link to="/todos">Todos</Link>
+        <Link to="/passwords">Passwords</Link>
+        <Link to="/notes">Notes</Link>
+        <Link to="/bookmarks">Bookmarks</Link>
+      </div>
+      <button className="logout-btn" onClick={handleLogout}>
         Logout
       </button>
     </nav>

@@ -3,58 +3,106 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #f1f3f5;
 }
 
 .login-card {
-  background-color: #f8f9fa;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 40px 36px;
   width: 100%;
-  max-width: 340px;
+  max-width: 380px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-.login-card h2 {
+.login-card h1 {
   color: #1a1a1a;
   text-align: center;
-  margin-bottom: 24px;
+  font-size: 24px;
+  margin-bottom: 28px;
+}
+
+.login-card label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 6px;
 }
 
 .login-card input {
   width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #ced4da;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
   color: #1a1a1a;
-  padding: 10px 12px;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s;
+}
+
+.login-card input::placeholder {
+  color: #adb5bd;
 }
 
 .login-card input:focus {
   outline: none;
   border-color: #1971c2;
+  background-color: #ffffff;
 }
 
-.login-card button {
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  padding-right: 38px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.login-card button[type="submit"] {
   width: 100%;
   background-color: #1971c2;
   color: #fff;
   border: none;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 15px;
-  margin-top: 4px;
+  margin-top: 6px;
+  transition: background-color 0.15s;
 }
 
-.login-card button:hover {
+.login-card button[type="submit"]:hover {
   background-color: #1864ab;
 }
 
 .error-text {
   color: #e03131;
-  font-size: 14px;
-  margin: 8px 0;
+  background-color: #fff5f5;
+  border: 1px solid #ffc9c9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin: 4px 0 14px;
 }
