@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import PasswordEntry
+from .models import Note
+from .models import Bookmark
 
 
 class PasswordEntrySerializer(serializers.ModelSerializer):
@@ -16,3 +18,17 @@ class PasswordEntrySerializer(serializers.ModelSerializer):
         entry.set_password(raw_password)
         entry.save()
         return entry
+
+
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = ['id', 'title', 'content', 'tag', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'created_at', 'updated_at']
+
+
+class BookmarkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bookmark
+        fields = ['id', 'title', 'url', 'tag', 'is_favorite', 'created_at']
+        read_only_fields = ['id', 'created_at']
