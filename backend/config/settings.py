@@ -42,6 +42,7 @@ INSTALLED_APPS = [
      'passwords',
      'notes',
      'bookmarks',
+     'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -134,5 +135,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Utility App API',
+    'DESCRIPTION': 'API for Todos, Passwords, Notes, and Bookmarks',
+    'VERSION': '1.0.0',
 }
 FERNET_KEY = b'oML8mCRre1pzvrUCrsEOBKD6IrxGKOI9xRJUHNdrIsM='
