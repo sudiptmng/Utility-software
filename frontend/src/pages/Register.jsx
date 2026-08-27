@@ -15,6 +15,12 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+
     try {
       await api.post("/register/", { username, password });
       navigate("/login");
