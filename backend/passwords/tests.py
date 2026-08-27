@@ -57,3 +57,28 @@ def test_list_passwords_only_own(auth_client, user):
     response = auth_client.get('/api/passwords/')
     assert response.status_code == 200
     assert len(response.data) == 1
+
+
+@pytest.mark.django_db
+def test_reveal_password_correct_login_password(auth_client, user):
+    entry = PasswordEntry(user=user, site_name='Gmail', username='me')
+    entry.set_password('mysecret')
+    entry.save()
+
+    response = auth_client.post(f'/api/passwords/{entry.id}/reveal/', {
+        'login_password': 'testpass123'
+    })
+    assert response.status_code == 200
+    assert response.data['password'] == 'mysecret'
+
+
+@pytest.mark.django_db
+def test_reveal_password_wrong_login_password(auth_client, user):
+    entry = PasswordEntry(user=user, site_name='Gmail', username='me')
+    entry.set_password('mysecret')
+    entry.save()
+
+    response = auth_client.post(f'/api/passwords/{entry.id}/reveal/', {
+        'login_password': 'wrongpassword'
+    })
+    assert response.status_code == 401
